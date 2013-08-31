@@ -4,11 +4,8 @@
 
 var express = require('express');
 var routes = require('./routes');
-<<<<<<< HEAD
 var chatroom = require('./routes/myroom');
-=======
 var login = require('./routes/login');
->>>>>>> 9598e527df4ff7d35b58adf0ea13f561a731d066
 var http = require('http');
 var path = require('path');
 
@@ -39,15 +36,12 @@ if ('production' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-<<<<<<< HEAD
 // Routes
 app.get('/', routes.index);
 app.get('/myroom', chatroom.index);
-=======
 // login
 app.get('/(login)?', login.index);
 app.post('/dologin', login.dologin);
->>>>>>> 9598e527df4ff7d35b58adf0ea13f561a731d066
 
 // application layout
 app.set('view_options', {
