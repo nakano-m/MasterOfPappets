@@ -8,8 +8,8 @@
 
     $(document).on('click', 'button', function (e) {
         var user = $('#user_name').val();
-        var page = $("##page_no").val();
-        console.log("msg1 : " + message);
+        var page = $("#page_no").val();
+        var message = user + "_" + page;
         socket.emit('msg send', message);
     });
 
@@ -25,6 +25,10 @@
             }
             select_tag += "</select>";
             $(".setting_area").prepend(select_tag);
+        } else {
+            var message_buf = message.split("_");
+            $("#" + message_buf[0]).children().hide();
+            $("#" + message_buf[0] + " #" + message_buf[1]).show();
         }
     });
 
