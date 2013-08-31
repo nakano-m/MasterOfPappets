@@ -6,6 +6,7 @@
         console.log('connected(client side)');
     });
 
+    // 切り替えボタンが押されたときの動作
     $(function () {
         $("#page_change").click(function () {
             console.log('button click');
@@ -16,6 +17,7 @@
         });
     });
 
+    // メッセージ受信
     socket.on('msg push', function (message) {
         var message_buf = message.split("_");
         if (message_buf[0] == "name") {
@@ -65,6 +67,7 @@
         console.log("msg3 : " + message);
     });
 
+    // ブラウザが閉じられたら削除するユーザー情報を送信
     $(window).bind("beforeunload", function (e) {
         console.log($("#user_name").val() + "ログアウト");
         var message = "delete_" + $("#user_name").val();
