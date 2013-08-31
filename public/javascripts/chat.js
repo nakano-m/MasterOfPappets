@@ -17,7 +17,6 @@
     });
 
     socket.on('msg push', function (message) {
-        alert("message");
         var message_buf = message.split("_");
         if (message_buf[0] == "name") {
             userArr.push(message_buf[1]);
@@ -57,16 +56,8 @@
         var user_name = "name_" + $("#user_name").val();
         socket.emit('msg send', user_name);
         var user_length = userArr.length;
-        if ($("#user_name").val() === undefined) {
-            $("select[name='user']").remove();
-            var select_tag = "<select name='user'>";
-            for (var i = 0; i < user_length; i++) {
-                if (userArr[i] !== "undefined") {
-                    select_tag += "<option value='" + userArr[i] + "'>" + userArr[i] + "</option>";
-                }
-            }
-            select_tag += "</select>";
-            $(".setting_area").prepend(select_tag);
+        if ($("#user_name").val() !== undefined) {
+            $("#" + $("#user_name").val()).children().hide();
         }
     });
 
