@@ -4,8 +4,8 @@
 
 var express = require('express');
 var routes = require('./routes');
-var chatroom = require('./routes/myroom');
 var login = require('./routes/login');
+var chatroom = require('./routes/myroom');
 var userroom = require('./routes/userroom');
 var http = require('http');
 var path = require('path');

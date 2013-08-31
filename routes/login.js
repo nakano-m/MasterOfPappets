@@ -11,8 +11,15 @@ exports.index = function(req, res){
  */
 exports.dologin = function(req, res) {
   if (validateUser(req.body.user_name, req.body.password)) {
-    res.redirect("/myroom?user_name=" + req.body.user_name);
+    if (isMasterUser(req.body.user_name)) {
+      // redirect Master's room.
+      res.redirect("/myroom");
+    }
+    // redirect User's room.
+    res.redirect("/userroom?user_name=" + req.body.user_name);
   }
+
+  // failed to login.
   res.render("login", {
     user_name: req.body.user_name,
     error_message: "Invalid."
@@ -20,19 +27,19 @@ exports.dologin = function(req, res) {
 }
 
 function validateUser(user_name, password) {
-  
-  var error_message = "";
-
   // empty
   if (!user_name || !password) {
     return false;
   }
 
   // invalid master
-  if (user_name == 'master' &&
-      password != 'backdoor') {
+  if (isMasterUser(user_name) && password != 'backdoor') {
     return false;
   }
 
   return true;
+}
+
+function isMasterUser(user_name, password) {
+  return user_name == 'master';
 }
