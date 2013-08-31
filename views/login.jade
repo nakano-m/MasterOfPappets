@@ -1,0 +1,19 @@
+extends layout
+
+block contents
+  h1 Master! Master!
+  h3 Login the MasterOfPappets.
+  #login
+    form(action='/dologin', method='POST')
+      table
+        tbody
+          tr
+            th User Name:
+            td
+              input(type='text', name='username')
+          tr
+            th Password:
+            td
+              input(type='password', name='password')
+      p
+        input(type='submit', value='login')
