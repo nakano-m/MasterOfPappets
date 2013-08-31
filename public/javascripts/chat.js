@@ -14,6 +14,7 @@
     });
 
     socket.on('msg push', function (message) {
+        alert(message);
         var message_buf = message.split("_");
         if (message_buf[0] == "name") {
             userArr.push(message_buf[1]);
@@ -33,7 +34,7 @@
 
     // 初回起動時ユーザー情報を読み込む
     $(function () {
-        var user_name = "name_" + $("#user_name").valueOf();
+        var user_name = "name_" + $("#user_name").val();
         socket.emit('msg send', user_name);
     });
 
