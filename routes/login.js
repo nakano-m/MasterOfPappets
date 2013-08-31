@@ -14,9 +14,11 @@ exports.dologin = function(req, res) {
     if (isMasterUser(req.body.user_name)) {
       // redirect Master's room.
       res.redirect("/myroom");
+      return;
     }
     // redirect User's room.
     res.redirect("/userroom?user_name=" + req.body.user_name);
+    return;
   }
 
   // failed to login.
@@ -40,6 +42,6 @@ function validateUser(user_name, password) {
   return true;
 }
 
-function isMasterUser(user_name, password) {
+function isMasterUser(user_name) {
   return user_name == 'master';
 }
