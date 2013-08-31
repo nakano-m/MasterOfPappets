@@ -5,7 +5,7 @@
 var express = require('express');
 var routes = require('./routes');
 var login = require('./routes/login');
-var chatroom = require('./routes/myroom');
+var myroom = require('./routes/myroom');
 var userroom = require('./routes/userroom');
 var http = require('http');
 var path = require('path');
@@ -40,7 +40,7 @@ if ('production' == app.get('env')) {
 // Routes
 app.get('/(login)?', login.index);
 app.post('/dologin', login.dologin);
-app.get('/myroom', chatroom.index);
+app.get('/myroom', myroom.index);
 app.get('/userroom', userroom.index);
 
 // application layout

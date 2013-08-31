@@ -42,10 +42,26 @@
     $(function () {
         var user_name = "name_" + $("#user_name").val();
         socket.emit('msg send', user_name);
+        var user_length = userArr.length;
+        if ($("#user_name").val() === undefined) {
+            $("select[name='user']").remove();
+            var select_tag = "<select name='user'>";
+            for (var i = 0; i < user_length; i++) {
+                if (userArr[i] !== "undefined") {
+                    select_tag += "<option value='" + userArr[i] + "'>" + userArr[i] + "</option>";
+                }
+            }
+            select_tag += "</select>";
+            $(".setting_area").prepend(select_tag);
+        }
     });
 
     socket.on('msg updateDB', function (message) {
         console.log("msg3 : " + message);
+    });
+
+    $(window).bind("beforeunload", function (e) {
+        alert($("#user_name").val() + "閉じます");
     });
 
 })(jQuery);

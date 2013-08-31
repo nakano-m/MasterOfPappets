@@ -9,6 +9,7 @@ exports.index = function(req, res){
 /*
  * POST login infomation.
  */
+<<<<<<< HEAD
 exports.dologin = function (req, res) {
     if (validateUser(req.body.user_name, req.body.password)) {
         if (isMasterUser(req.body.user_name)) {
@@ -19,6 +20,19 @@ exports.dologin = function (req, res) {
         // redirect User's room.
         res.redirect("/userroom?user_name=" + req.body.user_name);
     }
+=======
+exports.dologin = function(req, res) {
+  if (validateUser(req.body.user_name, req.body.password)) {
+    if (isMasterUser(req.body.user_name)) {
+      // redirect Master's room.
+      res.redirect("/myroom");
+      return;
+    }
+    // redirect User's room.
+    res.redirect("/userroom?user_name=" + req.body.user_name);
+    return;
+  }
+>>>>>>> 006161aef33ae9f94d8de47f7bb6a0fb922a6de8
 
     // failed to login.
     res.render("login", {
@@ -41,6 +55,6 @@ function validateUser(user_name, password) {
   return true;
 }
 
-function isMasterUser(user_name, password) {
+function isMasterUser(user_name) {
   return user_name == 'master';
 }
