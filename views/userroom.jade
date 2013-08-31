@@ -4,10 +4,46 @@ extend layout
 block header
   script(type='text/javascript', src='/socket.io/socket.io.js').
   script(type='text/javascript', src='/javascripts/chat.js').
+  style(type='text/css')
+    [id*="page_"] {
+      height: 300px;
+    }
+    #page_1 {
+      background: #ff0000;
+    }
+    #page_2 {
+      background: #00ff00;
+    }
+    #page_3 {
+      background: #0000ff;
+    }
+    #page_4 {
+      background: #f0f000;
+    }
+    #page_5 {
+      background: #0f0f00;
+      color: #ffffff;
+    }
+    #page_6 {
+      background: #00f0f0;
+    }
+    #page_7 {
+      background: #f00f00;
+    }
+    #page_8 {
+      background: #0f00f0;
+    }
+    #page_9 {
+      background: #00f00f;
+    }
+    #page_10 {
+      background: #f0000f;
+    }
 
 block contents
   .window_zone
     div(id='#{user_name}')
       for pa in page
-        div(id='#{pa}')
+        div(id= pa)
+          h1= pa
   input#user_name(type='hidden', name='user_name', value='#{user_name}').
