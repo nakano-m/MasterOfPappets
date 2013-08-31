@@ -14,6 +14,7 @@ exports.dologin = function (req, res) {
         if (isMasterUser(req.body.user_name)) {
             // redirect Master's room.
             res.redirect("/myroom");
+            return;
         }
         // redirect User's room.
         res.redirect("/userroom?user_name=" + req.body.user_name);
