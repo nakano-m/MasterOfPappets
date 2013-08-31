@@ -13,4 +13,8 @@ block contents
   .setting_area
     
   .select_page
-    
+    select#page_no
+        for pa in page
+            option #{pa}
+  .puts
+    input#page_change(type='button', value='切り替え').

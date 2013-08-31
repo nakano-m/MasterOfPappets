@@ -6,8 +6,9 @@
         console.log('connected(client side)');
     });
 
-    $(document).on('click', 'button#postbutton', function (e) {
-        var message = $('#message').val();
+    $(document).on('click', 'button', function (e) {
+        var user = $('#user_name').val();
+        var page = $("##page_no").val();
         console.log("msg1 : " + message);
         socket.emit('msg send', message);
     });
