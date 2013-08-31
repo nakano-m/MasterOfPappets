@@ -7,6 +7,7 @@ block header
 
 block contents
   .window_zone
-    div#{user_name}
-      for (var i = 0; i < 5; i++)
-        div(id= 'page_#{i}')
+    div(id='#{user_name}')
+      for pa in page
+        div(id='#{pa}')
+  input#user_name(type='hidden', name='user_name', value='#{user_name}').

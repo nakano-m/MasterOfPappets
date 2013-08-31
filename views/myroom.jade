@@ -9,4 +9,12 @@ block header
 block contents
   
   input#user_name(type='hidden', name='user_name', value='#{user_name}').
-  .window_zone
+  p #{user_name}さん、こんにちは
+  .setting_area
+    
+  .select_page
+    select#page_no
+        for pa in page
+            option #{pa}
+  .puts
+    input#page_change(type='button', value='切り替え').
