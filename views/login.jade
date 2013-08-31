@@ -4,13 +4,14 @@ block contents
   h1 Master! Master!
   h3 Login the MasterOfPappets.
   #login
+    p#error_message= error_message
     form(action='/dologin', method='POST')
       table
         tbody
           tr
             th User Name:
             td
-              input(type='text', name='username')
+              input(type='text', name='user_name')
           tr
             th Password:
             td

@@ -37,11 +37,9 @@ if ('production' == app.get('env')) {
 }
 
 // Routes
-app.get('/', routes.index);
-app.get('/myroom', chatroom.index);
-// login
 app.get('/(login)?', login.index);
 app.post('/dologin', login.dologin);
+app.get('/myroom', chatroom.index);
 
 // application layout
 app.set('view_options', {
